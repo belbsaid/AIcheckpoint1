@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Said BELBRIK — Web Developer</title>
+    <meta
+      name="description"
+      content="Said BELBRIK — Web Developer. Portfolio, projects and contact."
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fbfbfd;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #2563eb; /* blue-600 */
+        --accent-600: #1d4ed8;
+        --glass: rgba(255, 255, 255, 0.6);
+        --radius: 12px;
+        --container: 1100px;
+        --shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, var(--bg), #f7f9fc 60%);
+        color: #0f172a;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.4;
+        padding: 48px 24px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--container);
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 48px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.6)
+        );
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-weight: 600;
+        color: var(--accent-600);
+        background: rgba(37, 99, 235, 0.08);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        width: max-content;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 5vw, 56px);
+        line-height: 1.02;
+        letter-spacing: -0.01em;
+        font-weight: 800;
+      }
+
+      .name-accent {
+        color: var(--accent-600);
+        display: inline-block;
+      }
+
+      p.lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 18px;
+        max-width: 70ch;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        font-weight: 600;
+        border-radius: 10px;
+        border: 0;
+        cursor: pointer;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-600));
+        color: white;
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--accent-600);
+        border: 1px solid rgba(29, 78, 216, 0.12);
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+
+      /* Projects section */
+      #projects {
+        margin-top: 32px;
+      }
+
+      .projects {
+        margin-top: 18px;
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(16, 24, 40, 0.08);
+      }
+
+      .card .meta {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .blob {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.12),
+          rgba(99, 102, 241, 0.06)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--accent-600);
+        font-size: 14px;
+      }
+      /* Thumbnail images for project cards */
+      .thumb {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+        display: block;
+        background: #eef2ff;
+      }
+      .project-title {
+        font-weight: 700;
+      }
+      .project-sub {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Responsive grid */
+      @media (min-width: 640px) {
+        .hero {
+          grid-template-columns: 1fr 380px;
+        }
+        .projects {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 980px) {
+        .projects {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* small utilities */
+      .spacer {
+        height: 6px;
+      }
+      footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero" role="banner">
+        <div class="hero-inner">
+          <span class="eyebrow">Hello, I’m</span>
+          <h1>Said <span class="name-accent">BELBRIK</span></h1>
+          <p class="lead">
+            I’m a Web Developer building clean, accessible, and performant
+            interfaces for the modern web.
+          </p>
+
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              id="btnProjects"
+              href="#projects"
+              aria-controls="projects"
+              >My Projects</a
+            >
+            <a
+              class="btn btn-secondary"
+              href="mailto:hello@example.com"
+              aria-label="Email Said"
+              >Contact</a
+            >
+          </div>
+        </div>
+
+        <!-- Decorative card on the right of hero for visual balance -->
+        <aside
+          aria-hidden="true"
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <div
+            style="
+              width: 100%;
+              max-width: 320px;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: var(--shadow);
+            "
+          >
+            <img
+              src="https://source.unsplash.com/320x200/?web,design"
+              alt="Featured web design project"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+              loading="lazy"
+            />
+          </div>
+        </aside>
+      </header>
+
+      <main>
+        <section id="projects" aria-labelledby="projects-heading">
+          <h2 id="projects-heading" style="margin-top: 26px; font-size: 20px">
+            Projects
+          </h2>
+          <p style="margin: 6px 0 0 0; color: var(--muted)">
+            A small selection of web development projects — built with modern
+            front-end tools and attention to UX.
+          </p>
+
+          <div class="projects" role="list">
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?portfolio,design"
+                  alt="PortfolioX thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">PortfolioX</div>
+                  <div class="project-sub">
+                    A polished portfolio template for designers & developers.
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-secondary" href="#" aria-label="Open PortfolioX"
+                >View</a
+              >
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?kanban,workflow"
+                  alt="TaskFlow Manager thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">TaskFlow Manager</div>
+                  <div class="project-sub">
+                    A task management UI focused on workflows and collaboration.
+                  </div>
+                </div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="#"
+                aria-label="Open TaskFlow Manager"
+                >View</a
+              >
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?cryptocurrency,bitcoin"
+                  alt="CryptoVision Dashboard thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">CryptoVision Dashboard</div>
+                  <div class="project-sub">
+                    Real-time crypto insights and portfolio visualizations.
+                  </div>
+                </div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="#"
+                aria-label="Open CryptoVision Dashboard"
+                >View</a
+              >
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?ecommerce,shopping"
+                  alt="ShopEase UI thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">ShopEase UI</div>
+                  <div class="project-sub">
+                    A clean e-commerce front-end with product & checkout flows.
+                  </div>
+                </div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="#"
+                aria-label="Open ShopEase UI"
+                >View</a
+              >
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?education,learning"
+                  alt="EduLearn Platform thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">EduLearn Platform</div>
+                  <div class="project-sub">
+                    An online learning platform with courses and progress
+                    tracking.
+                  </div>
+                </div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="#"
+                aria-label="Open EduLearn Platform"
+                >View</a
+              >
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="meta">
+                <img
+                  class="thumb"
+                  src="https://source.unsplash.com/160x160/?travel,adventure"
+                  alt="TravelMate Finder thumbnail"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="project-title">TravelMate Finder</div>
+                  <div class="project-sub">
+                    A travel discovery app for planning trips and finding
+                    partners.
+                  </div>
+                </div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="#"
+                aria-label="Open TravelMate Finder"
+                >View</a
+              >
+            </article>
+          </div>
+        </section>
+
+        <footer>
+          <div>
+            Made with care by Said BELBRIK •
+            <span style="color: var(--muted)">Web Developer</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // Smooth scroll fallback and small keyboard/accessibility helper
+      (function () {
+        const btn = document.getElementById("btnProjects");
+        const projects = document.getElementById("projects");
+        if (btn && projects) {
+          btn.addEventListener("click", function (e) {
+            // let the anchor work normally for assistive tech; prevent default to enable smooth behavior
+            e.preventDefault();
+            projects.scrollIntoView({ behavior: "smooth", block: "start" });
+            // focus the section heading for screen readers
+            const heading = document.getElementById("projects-heading");
+            if (heading) {
+              heading.tabIndex = -1;
+              heading.focus();
+            }
+          });
+        }
+
+        // Reveal on load: gentle fade for cards
+        window.addEventListener("load", function () {
+          const cards = document.querySelectorAll(".card");
+          cards.forEach((c, i) => {
+            c.style.opacity = "0";
+            c.style.transform = "translateY(8px)";
+            setTimeout(() => {
+              c.style.transition = "opacity .45s ease, transform .45s ease";
+              c.style.opacity = "1";
+              c.style.transform = "translateY(0)";
+            }, 80 * i);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
